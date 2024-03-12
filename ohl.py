@@ -64,7 +64,7 @@ def download_data(url, fake=False):
     if fake:
         return pickle.load(open("sample_data.pcl", "rb"))
     else:
-        res = requests.get(url)
+        res = requests.get(url, timeout=60)
         string_response = res.content.decode("utf-8")
         dict_response = ast.literal_eval(string_response)
         return dict_response["data"]
